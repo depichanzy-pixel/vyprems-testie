@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eaf4ff">
+  <title>Testimoni — Devitads</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">d.</span><span>DEVITADS<small>TESTIMONIAL WALL</small></span></a>
+    <nav><a href="#testimoni">Testimoni</a><button class="owner-link" id="open-owner">Owner Login</button></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><i></i> CUSTOMER EXPERIENCE</span>
+        <h1>Real buyers.<br><em>Real stories.</em></h1>
+        <p>Kumpulan pengalaman dan bukti transaksi pelanggan Devitads. Terima kasih sudah menjadi bagian dari perjalanan kami.</p>
+        <a class="primary-btn" href="#testimoni">Lihat testimoni <span>↘</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <img class="kitty-gif kitty-hero" src="/assets/royal-kitty.gif" alt="">
+        <div class="orb orb-one"></div><div class="orb orb-two"></div>
+        <div class="floating-card card-a"><span class="mini-check">✓</span><div><b>Order received</b><small>Terima kasih, kak!</small></div></div>
+        <div class="floating-card card-b"><span class="stars">★★★★★</span><b>Happy customer</b><small>Pengalaman belanja yang menyenangkan.</small></div>
+        <div class="hero-stamp">D<br><small>TRUST</small></div>
+      </div>
+      <div class="hero-bottom"><span>EST. DEVITADS</span><span>TRANSPARENT • TRUSTED • DIGITAL</span></div>
+    </section>
+    <section class="stats">
+      <div><strong id="total-count">0</strong><span>Testimoni</span></div>
+      <div><strong>01</strong><span>Customer stories</span></div>
+      <div><strong>∞</strong><span>Appreciation</span></div>
+    </section>
+    <section class="gallery-section" id="testimoni">
+      <div class="section-heading"><div><span class="eyebrow">FROM OUR CUSTOMERS</span><h2>Wall of <em>trust.</em></h2></div><div class="heading-side"><img src="/assets/royal-kitty-small.gif" alt="" class="kitty-inline"><p>Geser, lihat, dan baca pengalaman buyer.</p></div></div>
+      <div class="toolbar">
+        <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Cari testimoni atau produk..."></label>
+        <select id="category-filter"><option value="">Semua kategori</option></select>
+      </div>
+      <div id="gallery" class="gallery"><div class="empty-state"><span>✦</span><h3>Belum ada testimoni</h3><p>Testimoni terbaru akan tampil di sini.</p></div></div>
+      <p class="privacy-note">Informasi pribadi pada screenshot sebaiknya disamarkan sebelum diunggah.</p>
+    </section>
+  </main>
+  <footer><img src="/assets/royal-kitty-wave.gif" class="footer-kitty" alt=""><a class="brand footer-brand" href="#"><span class="brand-mark">d.</span><span>DEVITADS<small>THANK YOU FOR YOUR TRUST</small></span></a><span>© <span id="year"></span> Devitads</span></footer>
+
+  <div class="modal hidden" id="owner-modal">
+    <div class="modal-backdrop" data-close></div>
+    <section class="modal-panel">
+      <button class="close-btn" data-close aria-label="Tutup">×</button>
+      <div id="login-view">
+        <span class="eyebrow">PRIVATE ACCESS</span><h2>Owner <em>login.</em></h2>
+        <p class="muted">Masuk untuk mengelola testimoni.</p>
+        <form id="login-form">
+          <label>Email owner<input id="owner-email" type="email" autocomplete="username" required placeholder="owner@email.com"></label>
+          <label>Password<input id="owner-password" type="password" autocomplete="current-password" required placeholder="Password"></label>
+          <button class="primary-btn full" type="submit">Masuk dashboard <span>→</span></button>
+          <p class="form-message" id="login-message"></p>
+        </form>
+      </div>
+      <div id="dashboard-view" class="hidden">
+        <div class="dashboard-head"><div><span class="eyebrow">CONTROL CENTER</span><h2>Owner <em>dashboard.</em></h2></div><button id="logout" class="outline-btn">Logout</button></div>
+        <form id="upload-form" class="upload-form">
+          <label>Judul testimoni<input id="title" maxlength="80" required placeholder="Contoh: Order Netflix berhasil"></label>
+          <label>Kategori produk<input id="category" maxlength="40" required placeholder="Netflix, Canva, Gemini..."></label>
+          <label>Keterangan (opsional)<textarea id="description" rows="2" maxlength="240" placeholder="Tambahkan catatan singkat..."></textarea></label>
+          <label class="file-drop"><span class="upload-icon">↑</span><b>Pilih screenshot</b><small>JPG, PNG, atau WEBP · maksimal 8 MB</small><input id="image-file" type="file" accept="image/jpeg,image/png,image/webp" required></label>
+          <button class="primary-btn full" type="submit">Upload testimoni <span>↗</span></button>
+          <p class="form-message" id="upload-message"></p>
+        </form>
+        <div class="backup-tools">
+          <div><b>Backup & restore</b><small>Simpan salinan data dan gambar testimoni.</small></div>
+          <button type="button" class="outline-btn" id="backup-export">↓ Backup data</button>
+          <label class="restore-btn">↑ Restore backup<input id="backup-import" type="file" accept="application/json,.json"></label>
+        </div>
+        <div class="backup-hint">Backup berisi metadata dan salinan gambar. Simpan file JSON di tempat aman.</div>
+        <div class="manage-heading"><b>Kelola testimoni</b><span id="manage-count">0 item</span></div>
+        <div id="manage-list" class="manage-list"></div>
+      </div>
+    </section>
+  </div>
+  <div class="lightbox hidden" id="lightbox"><button id="lightbox-close">×</button><img id="lightbox-image" alt="Screenshot testimoni"><div id="lightbox-caption"></div></div>
+  <div id="toast" class="toast"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/config.js"></script>
+  <script src="/app.js"></script>
+</body></html>
